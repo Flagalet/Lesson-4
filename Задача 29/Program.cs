@@ -1,37 +1,30 @@
 ﻿// Напишите программу, которая задаёт массив из 8 элементов и выводит их на экран.
-int[] New()
+int [] GetArrayFromString(string stringArray)
 {
-    Console.Write("Введите значения массива через запятую c пробелом: ");
-    string[] sign = Console.ReadLine()!.Split(", ");
-    int[] array;
-    if (sign.Length > 8)
+    string[] nums = stringArray.Split(" ", StringSplitOptions.RemoveEmptyEntries);
+    int[] res = new int[nums.Length];
+
+    for (int i = 0; i < nums.Length; i++)
     {
-        array = new int[sign.Length];
+            res[i] = int.Parse(nums[i]);
     }
-    else
-    {
-        array = new int[8];
-    }
-    for (int i = 0; i < sign.Length; i++)
-    {
-        array[i] = System.Int32.Parse(sign[i]);
-    }
-    return array;
+    return res;
 }
-
-void PrintArray(int[] arr)
+void Mass(int[] array)
 {
-    Console.WriteLine("Вывод заданного массива: ");
-    for (int i = 0; i < arr.Length; i++)
+     Console.Write($"{"["}");
+    for(int i = 0; i < array.Length; i++)
     {
-        Console.Write($"{arr[i]}");
-        if (i != arr.Length - 1)
+    Console.Write($"{array[i]}");
+    if(i != array.Length - 1)
         {
-            Console.Write(", ");
-
+            Console.Write($"{","}");
         }
     }
-
+    Console.Write($"{"]"}");
 }
-
-PrintArray(New());
+Console.Clear();
+Console.WriteLine("Введите массив");
+string num = Console.ReadLine();
+int[] numers = GetArrayFromString(num);
+Mass(numers);
